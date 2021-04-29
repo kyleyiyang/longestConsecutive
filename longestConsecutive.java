@@ -15,3 +15,26 @@ class Solution {
         return ans;
     }
 }
+
+*************************************************
+
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int n:nums) set.add(n);
+        int ans=0;
+        for (int i:set) {
+            if (!set.contains(i-1)) {
+                int current=i;
+                int count=1;
+                while (set.contains(i+1)) {
+                    count++;
+                    i++;
+                }
+                ans=Math.max(ans,count);
+            }
+        }
+        
+        return ans;
+    }
+}
